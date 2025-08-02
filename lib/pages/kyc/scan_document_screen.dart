@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
-import '../../main.dart';
+import 'facial_verification_screen.dart';
 
 class ScanDocumentScreen extends StatefulWidget {
   final String documentType;
@@ -176,28 +176,27 @@ class _ScanDocumentScreenState extends State<ScanDocumentScreen> {
             children: [
               Icon(Icons.check_circle, color: Colors.green, size: 30),
               SizedBox(width: 10),
-              Text('KYC Terminé'),
+              Text('Document Scanné'),
             ],
           ),
           content: Text(
-            'Votre ${widget.documentType.toLowerCase()} a été scanné avec succès ! Vous pouvez maintenant accéder à l\'application.',
+            'Votre ${widget.documentType.toLowerCase()} a été scanné avec succès ! Passons maintenant à la vérification faciale.',
           ),
           actions: [
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop(); // Ferme le dialog
-                // Redirige vers l'application principale
-                Navigator.of(context).pushAndRemoveUntil(
+                // Redirige vers la vérification faciale
+                Navigator.push(
+                  context,
                   MaterialPageRoute(
-                    builder: (context) => const MainNavigationPage(),
+                    builder: (context) => FacialVerificationScreen(
+                      documentType: widget.documentType,
+                    ),
                   ),
-                  (route) => false, // Supprime toutes les routes précédentes
                 );
               },
-              child: Text(
-                'Accéder à l\'App',
-                style: TextStyle(color: Colors.purple),
-              ),
+              child: Text('Continuer', style: TextStyle(color: Colors.purple)),
             ),
           ],
         );
