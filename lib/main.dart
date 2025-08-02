@@ -4,6 +4,7 @@ import 'pages/home_page.dart';
 import 'pages/savings_page.dart';
 import 'pages/more_page.dart';
 import 'pages/history_page.dart';
+import 'pages/ecommerce_home_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -41,8 +42,7 @@ class _MainNavigationPageState extends State<MainNavigationPage> {
   int _currentIndex = 0; // Start with Home tab selected
 
   final List<Widget> _pages = [
-    const HomePage(),
-    const SavingsPage(),
+    const EcommerceHomePage(),
     const PaymentPage(),
     const HistoryPage(),
     const MorePage(),
@@ -78,11 +78,6 @@ class _MainNavigationPageState extends State<MainNavigationPage> {
               icon: Icon(Icons.home_outlined),
               activeIcon: Icon(Icons.home),
               label: 'Accueil',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.savings_outlined),
-              activeIcon: Icon(Icons.savings),
-              label: 'Épargne',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.payment_outlined),
