@@ -5,6 +5,7 @@ import 'pages/savings_page.dart';
 import 'pages/more_page.dart';
 import 'pages/history_page.dart';
 import 'pages/ecommerce_home_page.dart';
+import 'pages/kyc/choose_document_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         fontFamily: 'Poppins',
       ),
-      home: const MainNavigationPage(),
+      home: const ChooseDocumentScreen(),
     );
   }
 }

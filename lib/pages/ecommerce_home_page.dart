@@ -21,11 +21,12 @@ class EcommerceHomePage extends StatelessWidget {
               const _TopBrands(),
               const SizedBox(height: 20),
               const _PriceCompareCard(),
+              const SizedBox(height: 100), // Espace pour la navigation
             ],
           ),
         ),
       ),
-      // bottomNavigationBar: const _BottomNavBar(),
+      bottomNavigationBar: const _BottomNavBar(),
     );
   }
 }
@@ -150,34 +151,40 @@ class _TopBrands extends StatelessWidget {
           ],
         ),
         const SizedBox(height: 10),
-        Wrap(
-          spacing: 16,
-          runSpacing: 16,
-          children: brands
-              .map(
-                (brand) => Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    CircleAvatar(
-                      radius: 22,
-                      backgroundColor: Colors.white,
-                      child: Text(
-                        brand[0],
-                        style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.purple,
+        SizedBox(
+          height: 100, // Hauteur fixe pour éviter le débordement
+          child: Wrap(
+            spacing: 16,
+            runSpacing: 16,
+            children: brands
+                .map(
+                  (brand) => Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      CircleAvatar(
+                        radius: 22,
+                        backgroundColor: Colors.white,
+                        child: Text(
+                          brand[0],
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.purple,
+                          ),
                         ),
                       ),
-                    ),
-                    const SizedBox(height: 4),
-                    Text(
-                      brand,
-                      style: const TextStyle(fontSize: 12, color: Colors.white),
-                    ),
-                  ],
-                ),
-              )
-              .toList(),
+                      const SizedBox(height: 4),
+                      Text(
+                        brand,
+                        style: const TextStyle(
+                          fontSize: 12,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ],
+                  ),
+                )
+                .toList(),
+          ),
         ),
       ],
     );
@@ -220,22 +227,22 @@ class _PriceCompareCard extends StatelessWidget {
   }
 }
 
-// class _BottomNavBar extends StatelessWidget {
-//   const _BottomNavBar();
+class _BottomNavBar extends StatelessWidget {
+  const _BottomNavBar();
 
-//   @override
-//   //Widget build(BuildContext context) {
-//     //return BottomNavigationBar(
-//       //type: BottomNavigationBarType.fixed,
-//       //selectedItemColor: Colors.purple,
-//       //unselectedItemColor: Colors.grey,
-//       //currentIndex: 0,
-//       //items: const [
-//         //BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Accueil'),
-//         //BottomNavigationBarItem(icon: Icon(Icons.savings), label: 'Épargne'),
-//         //BottomNavigationBarItem(icon: Icon(Icons.payment), label: 'Paiement'),
-//         //BottomNavigationBarItem(icon: Icon(Icons.grid_view), label: 'Plus'),
-//       //],
-//     //);
-//   }
-// }//
+  @override
+  Widget build(BuildContext context) {
+    return BottomNavigationBar(
+      type: BottomNavigationBarType.fixed,
+      selectedItemColor: Colors.purple,
+      unselectedItemColor: Colors.grey,
+      currentIndex: 0,
+      items: const [
+        BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Accueil'),
+        BottomNavigationBarItem(icon: Icon(Icons.savings), label: 'Épargne'),
+        BottomNavigationBarItem(icon: Icon(Icons.payment), label: 'Paiement'),
+        BottomNavigationBarItem(icon: Icon(Icons.grid_view), label: 'Plus'),
+      ],
+    );
+  }
+}
